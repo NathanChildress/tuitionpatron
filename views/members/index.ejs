@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TP members</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Baloo&display=swap" rel="stylesheet">
+  <!-- Materialize Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize CSS Framework -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/style.css" />
+  <!-- JavaScript for Materialize -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper purple">
+        <a href="" class="brand-logo left">TP members</a>
+            <!-- Place Login UI Here -->
+            <ul class="right">
+              <li>
+                <% if(user) { %>
+                  <a href="/logout"> <i class="material-icons left">trending_flat</i>Log Out</a>
+                <% } else { %>
+                  <a href="/auth/google"><i class="material-icons left ">vpn_key</i>Login with Google</a>
+                <% } %>
+              </li>
+            </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div id="members" class="col s12">
+        <% members.forEach(function(member) { %>
+          <div class="card blue-grey">
+            <div class="card-content white-text">
+              <div>
+                <span class="card-title">
+                  <i class="small material-icons">perm_identity</i>
+                  <span class="member-name"><%= member.name %></span>
+                </span>
+              </div>
+
+              <!-- Add Dynamic UI form below this line -->
+              <% if (member._id.equals(user && user._id)) { %>
+                <div class="card-action">
+                  <p> You're logged In!
+                </div>
+              <% } %>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
