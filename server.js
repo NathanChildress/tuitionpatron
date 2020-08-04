@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
-const session = require('express-session')
+const session = require('express-session');
+const initialize = require('./demo/initialize');
 const port = process.env.PORT || 3000;
 
 // We'll need to load the env vars
@@ -33,16 +34,20 @@ app.use(session({
   saveUninitialized: true
 }));
 
+// app.use(initialize.init)
 
 //passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 
 app.use('/', indexRoutes);
 app.use('/', membersRoutes);
 
 
 
+initialize.init(console.log);
 app.listen(port, () => {
     console.log(`Express is listening on port:${port}`);
   });

@@ -1,6 +1,9 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const Member = require('../models/member');
+const Role = require('../models/role');
+
+
 
 
 passport.use(new GoogleStrategy({
@@ -15,16 +18,19 @@ passport.use(new GoogleStrategy({
                 return cb(null, member);
             } else {
                 //we have a new member
-                console.log(profile);
-                const newMember = new Member({
-                    name: profile.displayName,
-                    email: profile.emails[0].value,
-                    avatarURL: profile.photos[0].value,
-                    googleId: profile.id
-                });
-            newMember.save(function(err) {
-                if (err) return cb(err);
-                return cb(null, newMember);
+                Role.findOne({'roleName': 'BasicMember'}, function(err, basicRole){
+                    console.log(profile);
+                    const newMember = new Member({
+                        name: profile.displayName,
+                        email: profile.emails[0].value,
+                        avatarURL: profile.photos[0].value,
+                        googleId: profile.id,
+                        role: basicRole,
+                    });
+                newMember.save(function(err) {
+                    if (err) return cb(err);
+                    return cb(null, newMember);
+                })
             })
             }
         })

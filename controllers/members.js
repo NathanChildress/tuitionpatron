@@ -7,7 +7,7 @@ module.exports = {
 function index(req, res) {
     console.log(this)
     Member.find({}, function(err, members) {
-        console.log("memer.find")
+        console.log("member.find")
         res.render('members/index', {
             members,
             user: req.user
