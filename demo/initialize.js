@@ -8,11 +8,11 @@ const Work = require('../models/work');
 
 function init(cb) {
 //We need to make sure our DB has an entry for our modelsto test things.
-Role.find({}, function(err, role) {
+Role.find({}, function(err, roles) {
     if(err) return cb(err);
-    if(role.length) {
-        console.log(`Found Role: ${role}`)
-        return role;
+    if(roles.length) {
+        console.log(`Found Role(s): ${roles}`)
+        return roles;
     } else {
         console.log(`We have to create our Roles`)
         console.log('Creating BasicMember')
@@ -29,29 +29,59 @@ Role.find({}, function(err, role) {
         adminRole.save(function(err) {
             if (err) return cb(err);})
         }
+        const demoRole = new Role({
+            roleName: "Demo",
+            roleRank: 9
+        })
+        demoRole.save(function(err) {
+            if (err) return cb(err);})
     });
 
 
 //If there are no members, create a dummy one.
-Member.find({}, function(err, member) {
+Member.find({}, function(err, members) {
         if(err) return cb(err);
-        if(member.length) {
-            console.log(`Found a Member: ${member}`)
-            return member;
+        if(members.length) {
+            console.log(`Found a Member: ${members}`)
+            return members;
         } else {
             //we have a new member
             console.log('Creating Demo User');
-            const newMember = new Member({
-                name:"Demo Name",
-                email: "No@email.com",
-                
-            });
-        newMember.save(function(err) {
-            if (err) return cb(err);
-            return newMember;
-        })
+            Role.findOne({'roleName': 'Demo'}, function (err, roleDemo) {
+                const newMember = new Member({
+                    name:"Demo Name",
+                    email: "No@email.com",
+                    role: roleDemo.id
+                });
+                newMember.save(function(err) {
+                    if (err) return cb(err);
+                    return newMember;
+                })
+            })
+
         }
     })
+
+Artist.find({}, function(err, artists) {
+    if(err) return cb(err);
+    if(artists.length) {
+        console.log(`Found an Artist: ${artists}`)
+        return;
+    } else {
+        console.log('Upgrading a member to artist');
+        Member.findOne({'name': 'Demo Name'}, function (err, memberDemo){
+            const newArtist = new Artist ({
+                member: memberDemo.id,
+                bio: "I'm a demo artist, interested in demoing things."
+            })
+            newArtist.save(function(err) {
+                if(err) return cb(err);
+                return newArtist;
+            })
+        })
+    }
+});
+
 cb()
 //end our initialize
 }

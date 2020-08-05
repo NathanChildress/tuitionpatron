@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+    <!-- Materialize Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>         
+
+<nav>
+    <div class="nav-wrapper green">
+      <a href="#" class="brand-logo">Arts Education Patron</a>
+      <ul id="nav-mobile" class="right hide-on-sm-and-down">
+        
+        <li><a href="/Artists">Artists</a></li>
+        <li><a href="/Works">Works</a></li>
+        <ul class="right">
+            <li>
+              <% if(locals.user) { %>
+                <a href="/logout"> <i class="material-icons left">trending_flat</i>Log Out</a>
+              <% } else { %>
+                <a href="/auth/google"><i class="material-icons left ">vpn_key</i>Login with Google</a>
+              <% } %>
+            </li>
+          </ul>
+      </ul>
+    </div>
+  </nav>
+
+    

@@ -1,0 +1,49 @@
+<%- include('../partials/header') %>
+<h1><%= title %> </h1>
+<body>
+    <div class="container">
+      <div class="row">
+        <div id="artist" class="col s12">
+            <div class="card blue-grey">
+              <div class="card-content white-text">
+                <div>
+                  <span class="card-title">
+                    <i class="small material-icons">palette</i>
+                    <span class="artist-name"><%= artist.member.name %></span>
+                  </span>
+                </div>
+                <div>
+                    <ul> Preferred Mediums:
+                    <% artist.artistMediums.forEach(function(medium){ %>
+                        <li><%= medium %> </li>
+                    
+                    <% }); %></ul>
+                </div>
+                <div>
+                    Open for Commission:
+                    <div><%= artist.artistAvailable %></div>
+                </div>
+                <!-- Add Dynamic UI form below this line -->
+                <% if (artist.member._id.equals(user && user._id)) { %>
+                  <div class="card-action">
+                    <p> You're logged In!
+                        <a href="/artists/<%= artist.id %>/update"><button class="button btn-success">Update</button> </a>
+                  </div>
+                  <div class="card-action">
+                    <p> Start an open Commission. 
+                        <a href="/work/<%= artist.id %>/new"><button class="button btn-success">New Work</button> </a>
+                  </div>
+                <% } else if (artist.artistAvailable) { %>
+                    <div class="card-action">
+                        <p> They're open for Commission. 
+                            <a href="/work/<%= artist.id %>/new"><button class="button btn-success">Update</button> </a>
+                      </div>
+                <% }; %>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+<%- include('../partials/footer') %>

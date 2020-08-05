@@ -1,6 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const session = require('express-session');
+const multer = require('multer')
+const upload = multer({dest: 'dest.uploads'});
 const initialize = require('./demo/initialize');
 const port = process.env.PORT || 3000;
 
@@ -18,6 +20,7 @@ require('./config/passport');
 // require our routes
 const indexRoutes = require('./routes/index');
 const membersRoutes = require('./routes/members');
+const artistsRoutes = require('./routes/artists');
 const passport = require('passport');
 
 // view engine setup
@@ -39,11 +42,15 @@ app.use(session({
 //passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.unsubscribe(function(req,res, next) {
+  res.locals.user = req.user;
+  next();
+})
 
 
 app.use('/', indexRoutes);
 app.use('/', membersRoutes);
+app.use('/', artistsRoutes);
 
 
 

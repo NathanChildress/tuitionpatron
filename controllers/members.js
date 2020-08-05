@@ -9,6 +9,7 @@ function index(req, res) {
     Member.find({}, function(err, members) {
         console.log("member.find")
         res.render('members/index', {
+            title: "Members",
             members,
             user: req.user
         })

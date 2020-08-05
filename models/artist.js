@@ -18,8 +18,13 @@ const reviewSchema =  new Schema({
 const artistSchema = new mongoose.Schema({
     artistAddress: String,
     artistBio: String,
+    artistAvailable: {
+        type: Boolean,
+        default: true
+    },
     artistMediums: [{type: mongoose.Schema.Types.ObjectId, ref: 'Medium'}],
-    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'Member'},
+    artistReviews: [reviewSchema],
+    member: {type: mongoose.Schema.Types.ObjectId, ref: 'Member'},
   }, {
     timestamps: true
   });
