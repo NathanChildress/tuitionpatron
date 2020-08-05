@@ -1,4 +1,39 @@
 <%- ../../partials/header.ejs %>
 
+<body>
+    <div class="container">
+      <div class="row">
+        <div id="members" class="col s12">
+            <div class="card blue-grey">
+              <div class="card-content white-text">
+                <div>
+                  <span class="card-title">
+                    <i class="small material-icons">perm_identity</i>
+                    <span class="member-name"><%= member.name %></span>
+                  </span>
+                </div>
+                <div>
+                    <ul>
+                        <li>
+                            <% if(artist) { %>
+                                <a href="artists/<%= artist.id %>"><button class="btn btn-success">Your Artist Profile</button> </a>
+                            <% } else { %>
+                                <a href="artists/<%= member.id %>"><button class="btn btn-success">Setup your Artist Profile</button> </a>
+                            <% { %>}
+                        </li>
+                    </ul>
+                </div>
+                <!-- Add Dynamic UI form below this line -->
+                <% if (member._id.equals(user && user._id)) { %>
+                  <div class="card-action">
+                    <p> You're logged In!
+                  </div>
+                <% } %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
 
 <%- ../../partials/footer.ejs %>
