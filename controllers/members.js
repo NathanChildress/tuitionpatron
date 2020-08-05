@@ -15,3 +15,11 @@ function index(req, res) {
         })
     })
 }
+
+function update(req, res) {
+    console.log("update")
+}
+
+function create(req, res) {
+    console.log("create")
+}

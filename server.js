@@ -21,6 +21,7 @@ require('./config/passport');
 const indexRoutes = require('./routes/index');
 const membersRoutes = require('./routes/members');
 const artistsRoutes = require('./routes/artists');
+const worksRoutes = require('./routes/works'); 
 const passport = require('passport');
 
 // view engine setup
@@ -42,15 +43,16 @@ app.use(session({
 //passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-app.unsubscribe(function(req,res, next) {
-  res.locals.user = req.user;
-  next();
-})
+// app.use(function(req,res, next) {
+//   res.locals.user = req.user;
+//   next();
+// })
 
 
 app.use('/', indexRoutes);
 app.use('/', membersRoutes);
 app.use('/', artistsRoutes);
+app.use('/', worksRoutes);
 
 
 

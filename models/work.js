@@ -17,16 +17,17 @@ const reviewSchema =  new Schema({
 const commissionSchema = new Schema({
     message: String,
     mediums: [{type: mongoose.Schema.Types.ObjectId, ref: 'Medium'}],
-
-
+    patron: {type: mongoose.Schema.Types.ObjectId, ref: 'Member'},
+    approved: { type: Boolean, default: false}
 })
 
 
 const workSchema = new mongoose.Schema({
     artistAddress: String,
+    workName: { type:String, default:"unnamed"},
     workDesc: String,
     workMediums: [{type: mongoose.Schema.Types.ObjectId, ref: 'Medium'}],
-    artistId: {type: mongoose.Schema.Types.ObjectId, ref: 'Member', required: true},
+    artistId: {type: mongoose.Schema.Types.ObjectId, ref: 'Artist', required: true},
     commissions: [commissionSchema],
     workReviews: [reviewSchema]
   }, {

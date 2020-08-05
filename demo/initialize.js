@@ -82,6 +82,55 @@ Artist.find({}, function(err, artists) {
     }
 });
 
+Medium.find({}, function(err, mediums) {
+    if(err) return cb(err);
+    if(mediums.length) {
+        console.log(`Found medium(s): ${mediums}`)
+        return mediums;
+    } else {
+        console.log(`We have to create our mediums`)
+        console.log('Creating Oil on Canvas')
+        const oilMedium = new Medium({
+            mediumName: "Oil on Canvas",
+            mediumMaterials: 'Oil paints, Canvas',
+            mediumDesc: 'Oil canvas allows for deep and long lasting colors.'
+        })
+        oilMedium.save(function(err) {
+            if (err) return cb(err);});
+        const watercolorMedium = new Medium({
+            mediumName: "Water paints on Canvas",
+            mediumMaterials: 'water paints, Canvas',
+            mediumDesc: 'Waterpaints on canvas allows for soft pastels.'
+        })
+        watercolorMedium.save(function(err) {
+            if(err) return cb(err); });
+
+        const demomedium = new Medium({
+            mediumName: "DemoMedium",
+            mediumMaterials: "Demosium",
+            mediumDesc: "Demo material is only limited by the imagination."
+        })
+        demomedium.save(function(err) {
+            if (err) return cb(err);})
+    }});
+
+    /*
+    const mediumSchema = new mongoose.Schema({
+  mediumName: {
+    type: String,
+    required: true
+  },
+  mediumMaterials: {
+    type: String,
+    required: true
+  },
+  mediumDesc: {
+    type: String,
+    required: true
+  },
+});
+    */
+
 cb()
 //end our initialize
 }

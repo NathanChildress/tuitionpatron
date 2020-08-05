@@ -2,7 +2,7 @@ const router = require('express').Router();
 const artistsCtrl = require('../controllers/profiles');
 
 // GET /artists
-router.get('/profiles', artistsCtrl.show);
+router.get('/profiles/:id', artistsCtrl.show);
 router.put('/profiles/:id', artistsCtrl.update);
 
 

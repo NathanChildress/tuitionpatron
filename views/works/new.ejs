@@ -1,4 +1,25 @@
-<%- ../../partials/header.ejs %>
+<%- include('../partials/header') %>
 
+<section class="section container">
+    <h2>Let's get started broadening the world...</h2>
+    <form id="new-form" action="/works/<%= artist.id %>/new" method="POST">
 
-<%- ../../partials/footer.ejs %>
+        <label>Commission Request</label>
+        <input name="message" type="text" required>
+        <label>Mediums</label>
+                <script>
+                    $(document).ready(function(){
+            $('select').formSelect();
+            });
+                </script>
+        <select name="" id="">
+            <% mediums.forEach(function(m) { %>
+                <option value="<%= m.id %>"><%= m.mediumName %></option>
+            <% }) %>
+        </select>
+        
+        <input type="submit" value="Request Commission">
+    </form>
+    </section>
+
+<%- include('../partials/footer') %>
