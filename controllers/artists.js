@@ -15,7 +15,6 @@ module.exports = {
 function index(req, res) {
     console.log("index")
     Artist.find({}).populate('member').exec(function(err, artists) {
-        console.log(`artist.find: ${artists}`)
         res.render('artists/index', {
             title: "Artists",
             artists,
@@ -28,10 +27,13 @@ function show(req, res, cb) {
     console.log("show")
     Artist.findById(req.params.id).populate('member').exec(function(err, artist) {
         if(err) return cb(err);
-        res.render('artists/show', {
-            title: `Artist ${artist.member.name}`,
-            artist,
-            user: req.user,
+        Profile.find({'member':artist.member}, function(err, profile){
+            res.render('artists/show', {
+                title: `Artist ${artist.member.name}`,
+                artist,
+                profile,
+                user: req.user,
+            })
         })
     })
 }

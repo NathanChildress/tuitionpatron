@@ -24,8 +24,17 @@ function index(req, res) {
 
 function show(req, res, cb) {
     console.log("show")
-    Work.findById(req.params.id).populate('artistId').exec(function(err, work) {
+    Work.findById(req.params.id).populate('artistId')
+        .populate('workMediums')
+        .populate({
+            path: 'artistId',
+            populate: {
+                path: 'member'
+            }
+        }).exec(function(err, work) {
+        
         if(err) return cb(err);
+        console.log(work);
         res.render('works/show', {
             title: `work ${work.name}`,
             work,

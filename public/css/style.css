@@ -6,11 +6,11 @@
 } 
 
 .aep-head{
-    background-color: red;
+    background-color: #a61b00;
 }
 
 .aep-foot{
-    background-color: purple;
+    background-color: #a61b00;
     color: black;
 }
           
@@ -21,9 +21,14 @@
     font-size: 18px; 
     top: 50px; 
     left: 27%; 
-    color: red; 
+    color: #00a66c; 
 } 
 
 .aep-card {
-    background-color: grey;
+    background-color: #a66f00;
+}
+
+.aep-menu-img {
+    max-height: 4rem;
+    
 }

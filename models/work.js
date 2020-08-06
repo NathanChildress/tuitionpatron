@@ -28,6 +28,7 @@ const workSchema = new mongoose.Schema({
     workDesc: String,
     workMediums: [{type: mongoose.Schema.Types.ObjectId, ref: 'Medium'}],
     artistId: {type: mongoose.Schema.Types.ObjectId, ref: 'Artist', required: true},
+    imageURL: String,
     commissions: [commissionSchema],
     workReviews: [reviewSchema]
   }, {
