@@ -4,22 +4,17 @@
   <div class="container">
     <div class="row">
       <div id="artists" class="col s12">
-        <% artists.forEach(function(artist) { %>
+        <% works.forEach(function(work) { %>
           <div class="card blue-grey">
             <div class="card-content white-text">
               <div>
                 <span class="card-title">
                   <i class="small material-icons">palette</i>
-                  <span class="artist-name"><%= artist.member.name %></span>
+                  <span class="artist-name"><%= work.workName %></span>
                 </span>
               </div>
-              <div><small> <a href="/artists/<%= artist._id %>"> details</a></small></div>
-              <!-- Add Dynamic UI form below this line -->
-              <% if (artist.member._id.equals(user && user._id)) { %>
-                <div class="card-action">
-                  <p> You're logged In!
-                </div>
-              <% } %>
+              <div><small> <a href="/works/<%= works._id %>"> details</a></small></div>
+              
             </div>
           </div>
         <% }) %>
@@ -27,4 +22,4 @@
     </div>
   </div>
 
-<%- include('../partials/footer') %>
+  <%- include('../partials/footer') %>

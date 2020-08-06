@@ -4,6 +4,8 @@ const artistsCtrl = require('../controllers/artists');
 // GET /artists
 router.get('/artists', artistsCtrl.index);
 router.get('/artists/:id', artistsCtrl.show);
+router.get('/artists/:id/new', artistsCtrl.new);
+
 
 
 

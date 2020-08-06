@@ -2,6 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const Member = require('../models/member');
 const Role = require('../models/role');
+const Profile = require('../models/profile');
 
 
 
@@ -29,6 +30,12 @@ passport.use(new GoogleStrategy({
                     });
                 newMember.save(function(err) {
                     if (err) return cb(err);
+                    profile = new Profile({
+                        member: newMember._id
+                    })
+                    profile.save(function(err) {
+                        if (err) return cb(err);
+                    })
                     return cb(null, newMember);
                 })
             })

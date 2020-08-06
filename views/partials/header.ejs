@@ -26,6 +26,7 @@
         <ul class="right">
             <li>
               <% if(locals.user) { %>
+                <a href="/profiles"><i class="material-icons left ">perm_identity</i><%=user.name %></a>
                 <a href="/logout"> <i class="material-icons left">trending_flat</i>Log Out</a>
               <% } else { %>
                 <a href="/auth/google"><i class="material-icons left ">vpn_key</i>Login with Google</a>
