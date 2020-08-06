@@ -3,7 +3,7 @@ const passport = require('passport');
 
 
 router.get('/', function(req, res) {
-  res.redirect('/members');
+  res.render('index', {title: "Home"});
 });
 
 
@@ -16,7 +16,7 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect: '/members',
+    successRedirect: '/',
     failureRedirect: '/'
   }
 ))

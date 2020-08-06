@@ -1,0 +1,29 @@
+
+
+.bg-img{ 
+    
+    width: 100%; 
+} 
+
+.aep-head{
+    background-color: red;
+}
+
+.aep-foot{
+    background-color: purple;
+    color: black;
+}
+          
+/* designing title and tag line */
+.AEP-logo { 
+    text-align:center; 
+    position: absolute; 
+    font-size: 18px; 
+    top: 50px; 
+    left: 27%; 
+    color: red; 
+} 
+
+.aep-card {
+    background-color: grey;
+}

@@ -6,6 +6,7 @@ router.get('/artists', artistsCtrl.index);
 router.get('/artists/:id', artistsCtrl.show);
 router.get('/artists/:id/new', artistsCtrl.new);
 
+router.post('/artists/:id/new', artistsCtrl.create);
 
 
 

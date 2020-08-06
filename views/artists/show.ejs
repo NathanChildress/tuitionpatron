@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div id="artist" class="col s12">
-            <div class="card blue-grey">
+            <div class="card aep-card">
               <div class="card-content white-text">
                 <div>
                   <span class="card-title">
@@ -36,7 +36,11 @@
                 <% } else if (artist.artistAvailable) { %>
                     <div class="card-action">
                         <p> They're open for Commission. 
+                          <% if(locals.user){ %>
                             <a href="/works/<%= artist._id %>/new"><button class="button btn-success">Update</button> </a>
+                            <% } else { %>
+                              Login\Sign Up to request a commission from this artist.
+                            <% } %>
                       </div>
                 <% }; %>
               </div>

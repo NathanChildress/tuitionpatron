@@ -1,34 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Tuition Patron</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Baloo&display=swap" rel="stylesheet">
-  <!-- Materialize Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Materialize CSS Framework -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="/css/style.css" />
-  <!-- JavaScript for Materialize -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
-<body>
-  <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper purple">
-        <a href="" class="brand-logo left">Tuition Patrion </a>
-            <!-- Place Login UI Here -->
-            <ul class="right">
-              <li>
-                <% if (user) { %>
-                  <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-                <% } else { %>
-                  <a href="/auth/google"> <i class="material-icons left">vpn_key</i>Login with Google</a>
-                <% } %>
-              </li>
-            </ul>
-      </div>
-    </nav>
+<%- include('./partials/header') %>
+  
+</div>
+  <div class="container">
+    <img src="https://res.cloudinary.com/dfm6aykqi/image/upload/v1596735698/books-learning-graduation-home-picture-memory-1576995-pxhere.com_b9xcmx.png" alt="Arts Education Background" class="bg-img">
+    <div class="AEP-logo">
+      <h2><strong> Arts Education Patron</strong></h2>
+      <p>An exchange service dedicated to promoting the arts and art education</p>
+    </div>
   </div>
-</body>
-</html>
+
+  <%- include('./partials/footer') %>

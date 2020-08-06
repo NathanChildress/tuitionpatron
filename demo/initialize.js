@@ -114,22 +114,7 @@ Medium.find({}, function(err, mediums) {
             if (err) return cb(err);})
     }});
 
-    /*
-    const mediumSchema = new mongoose.Schema({
-  mediumName: {
-    type: String,
-    required: true
-  },
-  mediumMaterials: {
-    type: String,
-    required: true
-  },
-  mediumDesc: {
-    type: String,
-    required: true
-  },
-});
-    */
+
 
 cb()
 //end our initialize
