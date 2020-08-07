@@ -11,9 +11,16 @@
                 <span class="card-title">
                   <i class="small material-icons">palette</i>
                   <span class="artist-name"><%= work.workName %></span>
+                  <a href="/artists/<%= work.artistId._id %>">
+                    <span class="artist-name"><%= work.artistId.member.name %></span>
+                  </a>
                 </span>
               </div>
-              <div><small> <a href="/works/<%= work._id %>"> details</a></small></div>
+              <div>
+                <a href="/works/<%= work._id %>">
+                  <img src="<%= work.imageURL %>" alt="" class="aep-works-img">
+                </a>
+              </div>
               
             </div>
           </div>

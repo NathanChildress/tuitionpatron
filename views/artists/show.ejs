@@ -52,6 +52,7 @@
               <a href="/works/<%= work._id %>">
                 <img src="<%= work.imageURL %>" alt="" class="aep-works-img">
               </a>
+              <%= work.commissions[0].message %>
               <% if(artist.member._id.equals(user && user._id)) { %>
                 <div class="aed-inline-card">
                 <form method="POST" action="/works/<%= work._id %>/delete?_method=DELETE">

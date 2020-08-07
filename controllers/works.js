@@ -13,11 +13,18 @@ module.exports = {
 
 function index(req, res) {
     console.log("index")
-    Work.find({}).populate('artistId').exec(function(err, works) {
-        res.render('works/index', {
-            title: "works",
-            works,
-            user: req.user
+    Work.find({}).populate('artistId')
+        .populate('artistId')
+        .populate({
+            path: 'artistId',
+            populate: {
+                path: 'member'
+            }})
+        .exec(function(err, works) {
+            res.render('works/index', {
+                title: "works",
+                works,
+                user: req.user
         })
     })
 }
