@@ -36,7 +36,7 @@
                     <div class="card-action">
                         <p> They're open for Commission. 
                           <% if(locals.user){ %>
-                            <a href="/works/<%= work.artist._id %>/new"><button class="button btn-success">Update</button> </a>
+                            <a href="/works/<%= work.artistId._id %>/new"><button class="button btn-success">Update</button> </a>
                             <% } else { %>
                               Login\Sign Up to request a commission from this artist.
                             <% } %>

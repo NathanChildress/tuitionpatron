@@ -9,7 +9,7 @@
             <div class="card-content white-text">
               <div>
                 <span class="card-title">
-                  <a href="/profiles"><% if(artist.member.avatarURL) { %>
+                  <a href="/artists/<%= artist._id %>"><% if(artist.member.avatarURL) { %>
                     <img src="<%= artist.member.avatarURL %>" alt="" class="circle aep-menu-img">
                     <% } else { %> 
                       <i class="small material-icons">palette</i>

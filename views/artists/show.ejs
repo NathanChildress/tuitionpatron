@@ -47,9 +47,13 @@
             </div>
             <% works.forEach(function(work){ %>
             <div class="card aep-works-card">
+              <div><%= work.workName %></div>
+              <a href="/works/<%= work._id %>">
+                <img src="<%= work.imageURL %>" alt="">
+              </a>
               
             </div>
-            <% }) >
+            <% }) %>
           
         </div>
       </div>
