@@ -6,6 +6,8 @@ The purpose of this project is to try and create a portfolio and freelance work 
 
 ## Where to see it
 My project is initially setup on Heroku and can be [found here](https://artseducationpatron.herokuapp.com/)
+![screenshot](./images/Screenshot.png)
+
 
 
 ## Technologies Used
