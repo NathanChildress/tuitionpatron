@@ -43,8 +43,13 @@ function show(req, res, cb) {
     })
 }
 
-function update(req, res) {
+function update(req, res, cb) {
     console.log("update")
+    Work.findByIdAndUpdate(req.params.id, {"commissions.0.approved": true}, function(err, work) {
+        if(err) return cb(err);
+        res.redirect('/works');
+ 
+    })
 }
 
 function create(req, res) {

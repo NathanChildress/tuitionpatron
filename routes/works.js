@@ -7,10 +7,11 @@ router.use(methodOverride('_method'));
 // GET /works
 router.get('/works', worksCtrl.index);
 router.get('/works/:id/new', worksCtrl.new);
-router.get('/works/:id/update', worksCtrl.update);
 router.get('/works/:id', worksCtrl.show);
 
 router.post('/works/:id/new', worksCtrl.create);
+
+router.put('/works/:id/approve', worksCtrl.update);
 
 router.delete('/works/:id/delete', worksCtrl.delete);
 

@@ -53,10 +53,18 @@
                 <img src="<%= work.imageURL %>" alt="" class="aep-works-img">
               </a>
               <% if(artist.member._id.equals(user && user._id)) { %>
+                <div class="aed-inline-card">
                 <form method="POST" action="/works/<%= work._id %>/delete?_method=DELETE">
                   <input type="hidden" name="_method" value="DELETE">
-                  <button type="submit" class="btn btn-danger">Delete</button>
+                  <button type="submit" class="btn red">Delete</button>
                 </form>
+                
+                  <form method="POST" action="/works/<%= work._id %>/approve?_method=PUT" >
+                    <input type="hidden" name="_method" value="PUT">
+                    <button type="submit" class="btn btn-success">Approve</button>
+                  </form>
+                </div>
+                
               <% } %>
               
             </div>
@@ -72,7 +80,7 @@
                 <% if(artist.member._id.equals(user && user._id)) { %>
                   <form method="POST" action="/works/<%= work._id %>/delete?_method=DELETE">
                     <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn red">Delete</button>
                   </form>
                 <% } %>
                 

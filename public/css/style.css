@@ -40,3 +40,7 @@
 
     max-width: 50%
 }
+
+.aed-inline-card {
+    display: inline-block;
+}
