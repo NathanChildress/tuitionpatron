@@ -13,6 +13,7 @@
                   </span>
                 </div>
                 <div>
+                    <%= artist.artistBio %>
                     <ul> Preferred Mediums:
                     <% artist.artistMediums.forEach(function(medium){ %>
                         <li><%= medium %> </li>
@@ -53,6 +54,7 @@
                 <img src="<%= work.imageURL %>" alt="" class="aep-works-img">
               </a>
               <%= work.commissions[0].message %>
+              <%= work.commissions[0].mediums[0] %>
               <% if(artist.member._id.equals(user && user._id)) { %>
                 <div class="aed-inline-card">
                 <form method="POST" action="/works/<%= work._id %>/delete?_method=DELETE">
