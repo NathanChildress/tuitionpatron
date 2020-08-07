@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const session = require('express-session');
+const methodOverride = require('method-override');
 const multer = require('multer')
 const upload = multer({dest: 'dest.uploads'});
 const initialize = require('./demo/initialize');
@@ -30,10 +31,11 @@ const passport = require('passport');
 // view engine setup
 app.set('view engine', 'ejs');
 
+app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 // TODO Add session middleware here
 app.use(session({
   secret: 'PaintForDubloons!',

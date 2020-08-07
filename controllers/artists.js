@@ -28,14 +28,16 @@ function show(req, res, cb) {
     Artist.findById(req.params.id).populate('member').exec(function(err, artist) {
         if(err) return cb(err);
         Profile.find({'member':artist.member}, function(err, profile){
-            Work.find({'artistId': artist._id}, function(err, works){
-                console.log(works)
-                res.render('artists/show', {
-                    title: `Artist ${artist.member.name}`,
-                    artist,
-                    profile,
-                    works,
-                    user: req.user,
+            Work.find({'artistId': artist._id, "commissions.approved" : true}, function(err, worksApproved){
+                Work.find({'artistId': artist._id, "commissions.approved" : false}, function(err, worksUnapproved){
+                    res.render('artists/show', {
+                        title: `Artist ${artist.member.name}`,
+                        artist,
+                        profile,
+                        worksApproved,
+                        worksUnapproved,
+                        user: req.user,
+                    })
                 })
             })
         })

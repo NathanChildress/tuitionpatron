@@ -25,10 +25,18 @@
 } 
 
 .aep-card {
-    background-color: #00a66c;
+    background-color: #3700a6;
+    color: #00a66c;
+    
 }
 
 .aep-menu-img {
     max-height: 4rem;
     
+}
+
+.aep-works-img {
+    margin: auto;
+
+    max-width: 50%
 }

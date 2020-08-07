@@ -45,15 +45,39 @@
                 <% }; %>
               </div>
             </div>
-            <% works.forEach(function(work){ %>
+            <% worksUnapproved.forEach(function(work){ %>
             <div class="card aep-works-card">
+              <h2>UnApproved Commission</h2>
               <div><%= work.workName %></div>
               <a href="/works/<%= work._id %>">
-                <img src="<%= work.imageURL %>" alt="">
+                <img src="<%= work.imageURL %>" alt="" class="aep-works-img">
               </a>
+              <% if(artist.member._id.equals(user && user._id)) { %>
+                <form method="POST" action="/works/<%= work._id %>/delete?_method=DELETE">
+                  <input type="hidden" name="_method" value="DELETE">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              <% } %>
               
             </div>
             <% }) %>
+
+            <% worksApproved.forEach(function(work){ %>
+              <div class="card aep-works-card">
+                <h2>Approved Commissions</h2>
+                <div><%= work.workName %></div>
+                <a href="/works/<%= work._id %>">
+                  <img src="<%= work.imageURL %>" alt="" class="aep-works-img">
+                </a>
+                <% if(artist.member._id.equals(user && user._id)) { %>
+                  <form method="POST" action="/works/<%= work._id %>/delete?_method=DELETE">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                <% } %>
+                
+              </div>
+              <% }) %>
           
         </div>
       </div>

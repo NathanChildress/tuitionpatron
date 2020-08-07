@@ -8,12 +8,12 @@ module.exports = {
     update,
     new: newWork,
     create,
+    delete: workDelete,
 }
 
 function index(req, res) {
     console.log("index")
     Work.find({}).populate('artistId').exec(function(err, works) {
-        console.log(`work.find: ${works}`)
         res.render('works/index', {
             title: "works",
             works,
@@ -49,11 +49,16 @@ function update(req, res) {
 
 function create(req, res) {
     console.log("create")
-    Work.create({'artistId':req.params.id}, function (err, work) {
-        console.log(work)
-        work.commissions.push(req.body);
-        work.save(function(){
-            res.redirect(`/artists/${req.params.id}`)
+    Artist.findById(req.params.id, function(err, artist){
+        Work.create({'artistId':artist._id}, function (err, work) {
+            console.log(req.body)
+            if(req.user && (artist.member == req.user.id)) {
+                req.body.approved = true
+            }
+            work.commissions.push(req.body);
+            work.save(function(){
+                res.redirect(`/artists/${req.params.id}`)
+            })
         })
     })
 }
@@ -62,7 +67,6 @@ function newWork(req, res, cb) {
     console.log("new")
 
     const mediums = Medium.find({}, function(err, mediums){
-        console.log(mediums);
         Artist.findById(req.params.id).populate('member').exec(function(err, artist) {
             if(err) return cb(err);
             res.render('works/new', {
@@ -75,4 +79,13 @@ function newWork(req, res, cb) {
     });
     console.log(mediums);
 
+}
+
+function workDelete(req, res, cb) {
+    console.log("delete")
+
+    Work.findByIdAndDelete(req.params.id, function(err, result){
+        console.log(err)
+        res.redirect(`/works`)
+    })
 }
